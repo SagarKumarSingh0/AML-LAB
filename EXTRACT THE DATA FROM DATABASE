@@ -1,0 +1,11 @@
+import sqlite3
+conn=sqlite3.connect('example.db')
+cursor=conn.cursor()
+cursor.execute('''CREATE TABLE IF NOT EXISTS example_table
+(column1 text, column2 float, column3 text)''')
+cursor.execute("INSERT INTO example_table VALUES('data1', 42,'Hemanth'),('data2',02,'ssss')")
+cursor.execute("SELECT * FROM example_table WHERE column1 ='data2'")
+rows=cursor.fetchall()
+for row in rows:
+  print(row)
+conn.close()
